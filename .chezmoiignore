@@ -1,0 +1,8 @@
+{{ if ne .chezmoi.os "darwin" }}
+.config/wezterm.lua
+{{ end }}
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+/mnt/c/Chris/dot_wezterm.lua
+{{   end }}
+{{ end }}
