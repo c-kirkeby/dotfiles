@@ -15,6 +15,7 @@ end
 
 config = {
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
+  window_background_opacity = 0.9,
   font_size = 9.0,
   use_fancy_tab_bar = false,
 }
