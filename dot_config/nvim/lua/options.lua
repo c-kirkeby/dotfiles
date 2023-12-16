@@ -24,5 +24,3 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Completion
-vim.opt.completeopt = 'menuone,noselect'

@@ -15,7 +15,8 @@ local opts = {
     "rust",
     "bash",
     "c_sharp",
-    "go"
+    "go",
+    "norg"
   }
 }
 

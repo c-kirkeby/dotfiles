@@ -1,12 +1,12 @@
 local opts = {
-  options = { 
-    theme = 'auto'
+  options = {
+    theme = 'catppuccin'
   }
 }
 
 local M = {
   "nvim-lualine/lualine.nvim",
-  config = function() 
+  config = function()
     require('lualine').setup(opts)
   end
 }
