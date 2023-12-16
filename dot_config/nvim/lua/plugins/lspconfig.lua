@@ -1,11 +1,12 @@
 local M = {
   'neovim/nvim-lspconfig',
   dependencies = {
-    "hrsh7th/nvim-lspconfig",
+    --  "hrsh7th/nvim-lspconfig",
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     { 'j-hui/fidget.nvim', opts = {} },
     'folke/neodev.nvim',
+    "jose-elias-alvarez/null-ls.nvim",
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -23,7 +24,7 @@ local M = {
 
     -- Language servers with default settings
     local servers = {
---      "cspell",
+      --      "cspell",
       "html",
       "cssls",
       "tsserver",
@@ -85,7 +86,6 @@ local M = {
         },
       },
     }
-
   end
 }
 

@@ -1,7 +1,7 @@
 -- General
-vim.opt.clipboard = 'unnamedplus'
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.mouse = 'a'
+vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.mouse = "a"
 
 -- Tab Options
 vim.opt.tabstop = 2
@@ -23,4 +23,3 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
