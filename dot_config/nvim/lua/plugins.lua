@@ -4,10 +4,6 @@ local M = {
     opts = {},
   },
   {
-    "numToStr/Comment.nvim",
-    lazy = false,
-  },
-  {
     "github/copilot.vim",
     event = "InsertEnter",
   },
