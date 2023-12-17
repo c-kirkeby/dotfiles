@@ -1,19 +1,19 @@
 local M = {
   "williamboman/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim"
+    "williamboman/mason-lspconfig.nvim",
   },
   config = function()
-    local mason = require('mason')
-    local mason_lspconfig = require('mason-lspconfig')
+    local mason = require "mason"
+    local mason_lspconfig = require "mason-lspconfig"
 
     mason.setup {
       ensure_installed = {
         "css",
         "omnisharp",
-        "rust-analyzer",
+        --        "rust-analyzer",
         "typescript-language-server",
-        "rustfmt",
+        --        "rustfmt",
         "eslint",
         "lua-language-server",
         "prettier",
@@ -21,7 +21,7 @@ local M = {
         "html",
         "gopls",
         "goimports",
-      }
+      },
     }
 
     mason_lspconfig.setup {
@@ -35,9 +35,9 @@ local M = {
         "html",
         "gopls",
       },
-      automatic_installation = true
+      automatic_installation = true,
     }
-  end
+  end,
 }
 
 return M
