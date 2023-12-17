@@ -7,6 +7,11 @@ local M = {
     "github/copilot.vim",
     event = "InsertEnter",
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
 }
 
 return M

@@ -17,6 +17,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.showmode = false
 -- vim.opt.termsync = false
+vim.opt.signcolumn = "yes"
 
 -- Searching
 vim.opt.incsearch = true
