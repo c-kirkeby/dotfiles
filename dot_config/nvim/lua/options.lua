@@ -1,6 +1,6 @@
 -- General
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+-- vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.mouse = "a"
 
 -- Tab Options
@@ -12,7 +12,7 @@ vim.opt.expandtab = true
 -- UI Config
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.showmode = false
@@ -22,5 +22,3 @@ vim.opt.signcolumn = "yes"
 -- Searching
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true

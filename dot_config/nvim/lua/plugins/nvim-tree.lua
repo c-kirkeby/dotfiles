@@ -1,14 +1,14 @@
 local opts = {
   disable_netrw = true,
   filters = {
-    dotfiles = true
+    dotfiles = false,
   },
   git = {
-    enable = true
+    enable = true,
   },
   renderer = {
-    highlight_git = true
-  }
+    highlight_git = true,
+  },
 }
 
 local M = {
@@ -16,14 +16,14 @@ local M = {
   version = "*",
   lazy = false,
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     require("nvim-tree").setup(opts)
-    local api = require('nvim-tree.api')
+    local api = require "nvim-tree.api"
 
-    vim.keymap.set('n', '<C-n>', api.tree.toggle)
-  end
+    vim.keymap.set("n", "<C-n>", api.tree.toggle)
+  end,
 }
 
 return M
