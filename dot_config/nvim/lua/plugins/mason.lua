@@ -11,10 +11,11 @@ local M = {
       ensure_installed = {
         "css",
         "omnisharp",
+        "jsonls",
         --        "rust-analyzer",
         "typescript-language-server",
         --        "rustfmt",
-        "eslint",
+        "eslint_d",
         "lua-language-server",
         "prettier",
         "svelte",

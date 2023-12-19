@@ -1,16 +1,16 @@
 local M = {
-  'neovim/nvim-lspconfig',
+  "neovim/nvim-lspconfig",
   dependencies = {
     --  "hrsh7th/nvim-lspconfig",
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim', opts = {} },
-    'folke/neodev.nvim',
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    { "j-hui/fidget.nvim", opts = {} },
+    "folke/neodev.nvim",
     "jose-elias-alvarez/null-ls.nvim",
   },
   config = function()
-    local lspconfig = require('lspconfig')
-    local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    local lspconfig = require "lspconfig"
+    local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
     local opts = { noremap = true, silent = true }
@@ -19,24 +19,35 @@ local M = {
 
       opts.desc = "Show LSP references"
       vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+
+      opts.desc = "LSP Hover"
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
       -- Set up additional on_attach
+    end
+
+    local signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
     -- Language servers with default settings
     local servers = {
       --      "cspell",
+      "yamlls",
+      "jsonls",
       "html",
       "cssls",
       "tsserver",
       "eslint",
       "omnisharp",
-      "sqlls"
+      "sqlls",
     }
 
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
       }
     end
 
@@ -48,14 +59,14 @@ local M = {
       settings = {
         Lua = {
           diagnostics = {
-            globals = { "vim" }
+            globals = { "vim" },
           },
           workspace = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.stdpath("config") .. "/lua"] = true
-          }
-        }
-      }
+            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.stdpath "config" .. "/lua"] = true,
+          },
+        },
+      },
     }
 
     lspconfig.svelte.setup {
@@ -86,7 +97,7 @@ local M = {
         },
       },
     }
-  end
+  end,
 }
 
 return M

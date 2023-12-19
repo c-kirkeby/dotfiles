@@ -1,6 +1,10 @@
 local opts = {
   options = {
     theme = "catppuccin",
+    globalstatus = true,
+  },
+  disabled_filetypes = {
+    { "neo-tree" },
   },
 }
 

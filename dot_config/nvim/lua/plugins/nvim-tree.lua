@@ -12,6 +12,7 @@ local opts = {
 }
 
 local M = {
+  enabled = false,
   "nvim-tree/nvim-tree.lua",
   version = "*",
   lazy = false,
