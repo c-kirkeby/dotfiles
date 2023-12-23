@@ -4,8 +4,9 @@ local M = {
     lazy = false,
     name = "catppuccin",
     priority = 1000,
+    cmp = true,
     config = function()
-      local catppuccin = require('catppuccin')
+      local catppuccin = require "catppuccin"
 
       catppuccin.setup {
         transparent_background = true,
@@ -13,8 +14,8 @@ local M = {
 
       vim.opt.termguicolors = true
       vim.cmd.colorscheme "catppuccin-macchiato"
-    end
-  }
+    end,
+  },
 }
 
 return M

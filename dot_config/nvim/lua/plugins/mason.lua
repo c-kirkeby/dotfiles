@@ -7,23 +7,7 @@ local M = {
     local mason = require "mason"
     local mason_lspconfig = require "mason-lspconfig"
 
-    mason.setup {
-      ensure_installed = {
-        "css",
-        "omnisharp",
-        "jsonls",
-        --        "rust-analyzer",
-        "typescript-language-server",
-        --        "rustfmt",
-        "eslint_d",
-        "lua-language-server",
-        "prettier",
-        "svelte",
-        "html",
-        "gopls",
-        "goimports",
-      },
-    }
+    mason.setup {}
 
     mason_lspconfig.setup {
       ensure_installed = {

@@ -20,8 +20,14 @@ local M = {
       opts.desc = "Show LSP references"
       vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
+      opts.desc = "Go to definition"
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+
       opts.desc = "LSP Hover"
       vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+      opts.desc = "Code Actions"
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
       -- Set up additional on_attach
     end
 

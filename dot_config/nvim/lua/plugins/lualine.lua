@@ -1,10 +1,13 @@
 local opts = {
   options = {
-    theme = "catppuccin",
+    theme = "auto",
     globalstatus = true,
   },
   disabled_filetypes = {
     { "neo-tree" },
+  },
+  sections = {
+    lualine_a = { "mode" },
   },
 }
 

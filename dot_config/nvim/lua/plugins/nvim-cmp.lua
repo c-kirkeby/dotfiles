@@ -1,30 +1,80 @@
 local M = {
-  'hrsh7th/nvim-cmp',
+  "hrsh7th/nvim-cmp",
   dependencies = {
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lua',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-buffer',
-    'rafamadriz/friendly-snippets',
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-buffer",
+    "rafamadriz/friendly-snippets",
   },
   event = "InsertEnter",
   config = function()
-    local cmp = require("cmp")
+    local cmp = require "cmp"
 
-    local luasnip = require("luasnip")
+    local luasnip = require "luasnip"
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup {
       completion = {
-        completeopt = "menu,menuone,preview,noselect"
+        completeopt = "menu,menuone,preview,noselect",
       },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
-        end
+        end,
+      },
+      formatting = {
+        format = function(_, item)
+          local icons = {
+            Namespace = "󰌗",
+            Text = "󰉿",
+            Method = "󰆧",
+            Function = "󰆧",
+            Constructor = "",
+            Field = "󰜢",
+            Variable = "󰀫",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "󰑭",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈚",
+            Reference = "󰈇",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "󰙅",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = "󰊄",
+            Table = "",
+            Object = "󰅩",
+            Tag = "",
+            Array = "[]",
+            Boolean = "",
+            Number = "",
+            Null = "󰟢",
+            String = "󰉿",
+            Calendar = "",
+            Watch = "󰥔",
+            Package = "",
+            Copilot = "",
+            Codeium = "",
+            TabNine = "",
+          }
+          if icons[item.kind] then
+            item.kind = icons[item.kind] .. " " .. item.kind
+          end
+          return item
+        end,
       },
       mapping = cmp.mapping.preset.insert {
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -35,7 +85,7 @@ local M = {
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Insert,
-          select = true
+          select = true,
         },
       },
       sources = cmp.config.sources {
@@ -43,9 +93,9 @@ local M = {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-      }
+      },
     }
-  end
+  end,
 }
 
-  return M
+return M
