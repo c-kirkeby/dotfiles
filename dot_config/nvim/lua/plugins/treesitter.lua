@@ -10,6 +10,7 @@ local M = {
       highlight = {
         enable = true,
       },
+      auto_install = true,
       indent = { enable = true },
       ensure_installed = {
         -- Defaults
@@ -29,6 +30,8 @@ local M = {
         "c_sharp",
         "go",
         "norg",
+        "markdown",
+        "markdown_inline",
       },
     }
   end,

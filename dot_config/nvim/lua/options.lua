@@ -16,6 +16,7 @@ vim.opt.cursorline = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.showmode = false
+vim.opt.colorcolumn = "79"
 -- vim.opt.termsync = false
 vim.opt.signcolumn = "yes"
 

@@ -48,6 +48,7 @@ local M = {
       "eslint",
       "omnisharp",
       "sqlls",
+      "tailwindcss",
     }
 
     for _, lsp in ipairs(servers) do

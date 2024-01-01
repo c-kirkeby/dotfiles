@@ -5,10 +5,13 @@ local M = {
 
     local formatting = null_ls.builtins.formatting
     local lint = null_ls.builtins.diagnostics
+    local completion = null_ls.builtins.completion
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
     local sources = {
       lint.eslint_d,
+      -- lint.eslint,
+      completion.spell,
       formatting.prettier.with {
         extra_filetypes = { "svelte", "json" },
       },
