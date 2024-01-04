@@ -24,6 +24,7 @@ local M = {
         "json",
         "svelte",
         "vue",
+        "php",
         -- Other
         "rust",
         "bash",

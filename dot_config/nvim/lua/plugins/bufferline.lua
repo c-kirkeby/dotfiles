@@ -11,8 +11,12 @@ local M = {
           text_align = "left",
         },
       },
+      -- highlights = require("catppuccin.groups.integrations.bufferline").get(),
     },
   },
+  -- config = function(opts)
+  --   require("bufferline").setup(opts)
+  -- end,
 }
 
 return M

@@ -7,7 +7,9 @@ local M = {
     local mason = require "mason"
     local mason_lspconfig = require "mason-lspconfig"
 
-    mason.setup {}
+    mason.setup {
+      "cspell",
+    }
 
     mason_lspconfig.setup {
       ensure_installed = {
@@ -15,7 +17,6 @@ local M = {
         "omnisharp",
         "tsserver",
         "eslint",
-        -- "eslint_d",
         "lua_ls",
         "svelte",
         "html",

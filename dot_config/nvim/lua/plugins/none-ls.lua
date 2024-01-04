@@ -4,14 +4,21 @@ local M = {
     local null_ls = require "null-ls"
 
     local formatting = null_ls.builtins.formatting
-    local lint = null_ls.builtins.diagnostics
+    local code_actions = null_ls.builtins.code_actions
+    local diagnostics = null_ls.builtins.diagnostics
     local completion = null_ls.builtins.completion
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
     local sources = {
-      lint.eslint_d,
-      -- lint.eslint,
-      completion.spell,
+      diagnostics.eslint,
+      code_actions.eslint,
+      code_actions.gitsigns,
+      -- completion.spell,
+      diagnostics.cspell.with {
+        condition = function(utils)
+          return utils.root_has_file { ".cspell.json", "cspell.json" }
+        end,
+      },
       formatting.prettier.with {
         extra_filetypes = { "svelte", "json" },
       },

@@ -2,13 +2,15 @@ local opts = {
   options = {
     theme = "auto",
     globalstatus = true,
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
   },
   disabled_filetypes = {
     { "neo-tree" },
   },
-  sections = {
-    lualine_a = { "mode" },
-  },
+  -- sections = {
+  --   lualine_a = { "mode" },
+  -- },
 }
 
 local M = {

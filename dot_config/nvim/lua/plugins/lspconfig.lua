@@ -4,7 +4,16 @@ local M = {
     --  "hrsh7th/nvim-lspconfig",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        notification = {
+          window = {
+            winblend = 0,
+          },
+        },
+      },
+    },
     "folke/neodev.nvim",
     "jose-elias-alvarez/null-ls.nvim",
   },
@@ -49,6 +58,7 @@ local M = {
       "omnisharp",
       "sqlls",
       "tailwindcss",
+      "intelephense",
     }
 
     for _, lsp in ipairs(servers) do
@@ -70,6 +80,7 @@ local M = {
           },
           workspace = {
             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
             [vim.fn.stdpath "config" .. "/lua"] = true,
           },
         },

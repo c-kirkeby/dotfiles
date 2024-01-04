@@ -4,6 +4,9 @@ local opts = {
       folder_open = "",
       folder_closed = "",
     },
+    filesystem = {
+      visible = true,
+    },
     git_status = {
       symbols = {
         added = "",

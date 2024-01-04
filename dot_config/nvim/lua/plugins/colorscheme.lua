@@ -10,6 +10,13 @@ local M = {
 
       catppuccin.setup {
         transparent_background = true,
+        fidget = true,
+        gitsigns = true,
+        indent_blankline = {
+          enabled = true,
+          scope_color = "",
+          colored_indent_levels = true,
+        },
       }
 
       vim.opt.termguicolors = true
