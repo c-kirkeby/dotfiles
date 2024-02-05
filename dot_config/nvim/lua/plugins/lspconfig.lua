@@ -1,7 +1,28 @@
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--
+-- local on_attach = function(client, bufnr)
+--   local opts = { noremap = true, silent = true }
+--   opts.buffer = bufnr
+--
+--   opts.desc = "Show LSP references"
+--   vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+--
+--   opts.desc = "Go to definition"
+--   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+--
+--   opts.desc = "LSP Hover"
+--   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+--
+--   opts.desc = "Code Actions"
+--   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+--   -- Set up additional on_attach
+-- end
+
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
     --  "hrsh7th/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     {
@@ -19,9 +40,8 @@ local M = {
   },
   config = function()
     local lspconfig = require "lspconfig"
-    local cmp_nvim_lsp = require "cmp_nvim_lsp"
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
     local opts = { noremap = true, silent = true }
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
@@ -35,9 +55,12 @@ local M = {
       opts.desc = "LSP Hover"
       vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
+      opts.desc = "LSP Signature Help"
+      vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+
       opts.desc = "Code Actions"
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-      -- Set up additional on_attach
+      -- Set up additional on_attac>
     end
 
     local signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = " " }
@@ -49,16 +72,17 @@ local M = {
     -- Language servers with default settings
     local servers = {
       --      "cspell",
+      "emmet_ls",
       "yamlls",
       "jsonls",
       "html",
       "cssls",
       "tsserver",
       "eslint",
-      "omnisharp",
       "sqlls",
       "tailwindcss",
-      "intelephense",
+      -- "intelephense",
+      "phpactor",
     }
 
     for _, lsp in ipairs(servers) do
@@ -95,7 +119,8 @@ local M = {
     }
 
     lspconfig.omnisharp.setup {
-      cmd = { "omnisharp", "--languageserver", "stdio" },
+      -- cmd = { "omnisharp", "--languageserver", "stdio" },
+      cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
       on_attach = on_attach,
       capabilities = capabilities,
     }

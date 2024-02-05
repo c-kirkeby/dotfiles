@@ -8,18 +8,21 @@ local M = {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-buffer",
     "rafamadriz/friendly-snippets",
+    { "danymat/neogen", dependencies = { "nvim-treesitter/nvim-treesitter" }, config = true, version = "*" },
   },
   event = "InsertEnter",
   config = function()
     local cmp = require "cmp"
-
+    local neogen = require "neogen"
     local luasnip = require "luasnip"
 
     require("luasnip.loaders.from_vscode").lazy_load()
+    require("neogen").setup { snippet_engine = "luasnip" }
 
     cmp.setup {
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
+        -- completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,noinsert,preview",
       },
       snippet = {
         expand = function(args)

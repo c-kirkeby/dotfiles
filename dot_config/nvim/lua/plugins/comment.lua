@@ -1,5 +1,6 @@
 local M = {
   "numToStr/Comment.nvim",
+  dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
   lazy = false,
   keys = {
     { "gcc", mode = "n", desc = "Comment toggle current line" },
@@ -13,7 +14,9 @@ local M = {
     local comment = require "Comment"
     local comment_api = require "Comment.api"
 
-    comment.setup {}
+    comment.setup {
+      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    }
     local opts = { noremap = true, silent = true }
     vim.keymap.set("n", "<leader>/", comment_api.toggle.linewise.current, opts)
     vim.keymap.set(

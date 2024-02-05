@@ -17,6 +17,7 @@ local M = {
         "lua",
         "vim",
         -- Web Dev
+        "jsdoc",
         "html",
         "javascript",
         "typescript",

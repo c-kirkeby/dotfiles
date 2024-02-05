@@ -1,0 +1,9 @@
+local M = {
+  "akinsho/nvim-toggleterm.lua",
+  version = "*",
+  config = function()
+    require("toggleterm").setup {}
+  end,
+}
+
+return M

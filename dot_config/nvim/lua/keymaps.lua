@@ -21,11 +21,14 @@ vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", opts)
 vim.keymap.set("n", "]b", "<cmd>bnext<CR>", opts)
 
 -- Resizing
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts)
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Utility
 vim.keymap.set("n", "<ESC>", "<cmd>noh<CR>", opts)
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", opts)
+vim.keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
+
+-- Terminal
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)

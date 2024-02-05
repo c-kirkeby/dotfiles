@@ -4,7 +4,6 @@ local M = {
     lazy = false,
     name = "catppuccin",
     priority = 1000,
-    cmp = true,
     config = function()
       local catppuccin = require "catppuccin"
 
@@ -12,11 +11,20 @@ local M = {
         transparent_background = true,
         fidget = true,
         gitsigns = true,
+        cmp = true,
         indent_blankline = {
           enabled = true,
           scope_color = "",
           colored_indent_levels = true,
         },
+        illuminate = {
+          enabled = true,
+          lsp = false,
+        },
+        telescope = {
+          enabled = true,
+        },
+        lsp_trouble = false,
       }
 
       vim.opt.termguicolors = true

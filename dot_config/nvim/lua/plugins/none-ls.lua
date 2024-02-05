@@ -14,11 +14,12 @@ local M = {
       code_actions.eslint,
       code_actions.gitsigns,
       -- completion.spell,
-      diagnostics.cspell.with {
-        condition = function(utils)
-          return utils.root_has_file { ".cspell.json", "cspell.json" }
-        end,
-      },
+      -- diagnostics.cspell.with {
+      --   condition = function(utils)
+      --     return utils.root_has_file { ".cspell.json", "cspell.json" }
+      --   end,
+      -- },
+      diagnostics.cspell,
       formatting.prettier.with {
         extra_filetypes = { "svelte", "json" },
       },
@@ -37,14 +38,14 @@ local M = {
           group = augroup,
           buffer = bufnr,
           callback = function()
-            vim.lsp.buf.format { bufnr = bufnr }
+            vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 2000 }
           end,
         })
       end
     end
 
     null_ls.setup {
-      debug = true,
+      --      debug = true,
       sources = sources,
       on_attach = on_attach,
     }
