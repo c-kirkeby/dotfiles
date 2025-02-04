@@ -10,19 +10,11 @@ local M = {
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
     local sources = {
-      diagnostics.eslint,
-      code_actions.eslint,
       code_actions.gitsigns,
-      -- completion.spell,
-      -- diagnostics.cspell.with {
-      --   condition = function(utils)
-      --     return utils.root_has_file { ".cspell.json", "cspell.json" }
-      --   end,
-      -- },
-      diagnostics.cspell,
-      formatting.prettier.with {
-        extra_filetypes = { "svelte", "json" },
+      formatting.prettierd.with {
+        extra_filetypes = { "svelte", "json", "astro", "typescriptreact" },
       },
+      formatting.csharpier,
       formatting.gofmt,
       formatting.goimports,
       formatting.stylua,
@@ -38,14 +30,13 @@ local M = {
           group = augroup,
           buffer = bufnr,
           callback = function()
-            vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 2000 }
+            vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 5000 }
           end,
         })
       end
     end
 
     null_ls.setup {
-      --      debug = true,
       sources = sources,
       on_attach = on_attach,
     }

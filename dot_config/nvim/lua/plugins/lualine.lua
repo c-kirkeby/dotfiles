@@ -4,13 +4,23 @@ local opts = {
     globalstatus = true,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
+    sections = {
+      lualine_x = {
+        {
+          "fileformat",
+          icons_enabled = true,
+          symbols = {
+            unix = "LF",
+            dos = "CRLF",
+            mac = "CR",
+          },
+        },
+      },
+    },
   },
   disabled_filetypes = {
     { "neo-tree" },
   },
-  -- sections = {
-  --   lualine_a = { "mode" },
-  -- },
 }
 
 local M = {

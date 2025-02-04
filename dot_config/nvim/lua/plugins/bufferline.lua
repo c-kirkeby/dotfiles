@@ -1,8 +1,10 @@
 local M = {
   "akinsho/bufferline.nvim",
   dependencies = "nvim-tree/nvim-web-devicons",
+  after = "catppuccin",
   opts = {
     options = {
+      always_show_bufferline = false,
       offsets = {
         {
           filetype = "neo-tree",
@@ -11,12 +13,8 @@ local M = {
           text_align = "left",
         },
       },
-      -- highlights = require("catppuccin.groups.integrations.bufferline").get(),
     },
   },
-  -- config = function(opts)
-  --   require("bufferline").setup(opts)
-  -- end,
 }
 
 return M

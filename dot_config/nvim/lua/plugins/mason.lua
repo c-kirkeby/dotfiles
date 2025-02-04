@@ -9,26 +9,25 @@ local M = {
 
     mason.setup {
       "cspell",
+      "prettierd",
     }
 
     mason_lspconfig.setup {
       ensure_installed = {
         "cssls",
         "omnisharp",
-        "tsserver",
+        "ts_ls",
         "eslint",
         "lua_ls",
         "svelte",
         "html",
         "gopls",
         "emmet_ls",
-        --        "stylua",
-        --        "goimports",
-        --        "html-lsp",
-        --        "json-lsp",
         "yamlls",
         "sqlls",
-        "pyright",
+        "astro",
+        "tailwindcss",
+        "basedpyright",
       },
       automatic_installation = true,
     }

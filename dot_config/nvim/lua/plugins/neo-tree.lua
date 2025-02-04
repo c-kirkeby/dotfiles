@@ -33,7 +33,7 @@ local M = {
   config = function()
     require("neo-tree").setup(opts)
 
-    vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { noremap = true, silent = true })
+    vim.keymap.set("n", "<C-n>", ":Neotree toggle position=right<CR>", { noremap = true, silent = true })
   end,
 }
 

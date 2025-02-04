@@ -3,7 +3,7 @@ vim.g.maplocalleader = " "
 
 vim.opt.backspace = "2"
 vim.opt.showcmd = true
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.cursorline = true
 
 local opts = {
@@ -28,7 +28,6 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Utility
 vim.keymap.set("n", "<ESC>", "<cmd>noh<CR>", opts)
-vim.keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 
 -- Terminal
-vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>", opts)

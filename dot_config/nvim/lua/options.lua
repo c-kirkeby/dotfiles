@@ -1,6 +1,5 @@
 -- General
 vim.opt.clipboard = "unnamedplus"
--- vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.mouse = "a"
 
 -- Tab Options
@@ -27,8 +26,15 @@ vim.opt.list = true
 -- vim.opt.termsync = false
 vim.opt.signcolumn = "yes"
 
+-- Update time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
 -- Searching
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Theme
+vim.opt.termguicolors = true

@@ -34,6 +34,7 @@ local M = {
         "norg",
         "markdown",
         "markdown_inline",
+        "astro",
       },
     }
   end,

@@ -1,5 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
   dependencies = {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
@@ -10,7 +11,6 @@ local M = {
     "rafamadriz/friendly-snippets",
     { "danymat/neogen", dependencies = { "nvim-treesitter/nvim-treesitter" }, config = true, version = "*" },
   },
-  event = "InsertEnter",
   config = function()
     local cmp = require "cmp"
     local neogen = require "neogen"
