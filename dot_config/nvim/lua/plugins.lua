@@ -5,11 +5,11 @@ local M = {
       event = "VimEnter",
     },
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   opts = {},
+  -- },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -18,10 +18,6 @@ local M = {
   {
     "folke/zen-mode.nvim",
     opts = {},
-  },
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
   },
   {
     "folke/ts-comments.nvim",

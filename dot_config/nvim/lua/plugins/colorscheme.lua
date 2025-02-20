@@ -15,10 +15,9 @@ local M = {
           fidget = true,
           gitsigns = true,
           cmp = true,
-          indent_blankline = {
+          snacks = {
             enabled = true,
-            scope_color = "",
-            colored_indent_levels = true,
+            indent_scope_color = "",
           },
           illuminate = {
             enabled = true,
@@ -27,7 +26,7 @@ local M = {
           telescope = {
             enabled = true,
           },
-          lsp_trouble = false,
+          lsp_trouble = true,
           native_lsp = {
             enabled = true,
             virtual_text = {
@@ -47,6 +46,9 @@ local M = {
             inlay_hints = {
               background = true,
             },
+          },
+          which_key = {
+            enabled = true,
           },
         },
       }

@@ -13,7 +13,6 @@ local M = {
   },
   config = function()
     local cmp = require "cmp"
-    local neogen = require "neogen"
     local luasnip = require "luasnip"
 
     require("luasnip.loaders.from_vscode").lazy_load()
@@ -21,7 +20,6 @@ local M = {
 
     cmp.setup {
       completion = {
-        -- completeopt = "menu,menuone,preview,noselect",
         completeopt = "menu,menuone,noinsert,preview",
       },
       snippet = {
