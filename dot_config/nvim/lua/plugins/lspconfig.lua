@@ -1,7 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     {
@@ -14,12 +14,12 @@ local M = {
         },
       },
     },
-    "folke/neodev.nvim",
+    "folke/lazydev.nvim",
     "nvimtools/none-ls.nvim",
   },
   config = function()
     local lspconfig = require "lspconfig"
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(client, bufnr)
