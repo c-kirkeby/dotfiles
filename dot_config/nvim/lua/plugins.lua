@@ -11,10 +11,6 @@ local M = {
     opts = {},
   },
   {
-    "folke/zen-mode.nvim",
-    opts = {},
-  },
-  {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",

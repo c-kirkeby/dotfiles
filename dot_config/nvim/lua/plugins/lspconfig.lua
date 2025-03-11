@@ -1,7 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "saghen/blink.cmp",
+    "Saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     {
@@ -121,9 +121,10 @@ local M = {
           },
           workspace = {
             library = {
-              [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-              [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-              [vim.fn.stdpath "config" .. "/lua"] = true,
+              vim.fn.expand "$VIMRUNTIME/lua",
+              vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
+              vim.fn.stdpath "config" .. "/lua",
+              vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
             },
           },
         },

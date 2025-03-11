@@ -2,7 +2,7 @@ local M = {
   "mrcjkb/rustaceanvim",
   version = "^4",
   ft = { "rust" },
-  dependencies = { "neovim/nvim-lspconfig", "sahgen/blink.cmp" },
+  dependencies = { "neovim/nvim-lspconfig", "Saghen/blink.cmp" },
   opts = {
     server = {
       on_attach = function(_, bufnr)
