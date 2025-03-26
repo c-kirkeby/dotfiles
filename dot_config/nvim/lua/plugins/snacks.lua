@@ -29,6 +29,7 @@ local M = {
     gitbrowse = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
+    image = { enabled = true },
     lazygit = { enabled = true },
     picker = {
       sources = {
