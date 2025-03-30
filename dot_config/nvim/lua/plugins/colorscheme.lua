@@ -6,9 +6,9 @@ local M = {
     priority = 1000,
     config = function()
       --- @module "catppuccin"
-      local catppuccin = require "catppuccin"
+      local catppuccin = require("catppuccin")
 
-      catppuccin.setup {
+      catppuccin.setup({
         flavour = "macchiato",
         transparent_background = false,
         integrations = {
@@ -51,9 +51,9 @@ local M = {
             enabled = true,
           },
         },
-      }
+      })
 
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 }

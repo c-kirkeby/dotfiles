@@ -18,7 +18,7 @@ local M = {
     "nvimtools/none-ls.nvim",
   },
   config = function()
-    local lspconfig = require "lspconfig"
+    local lspconfig = require("lspconfig")
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local opts = { noremap = true, silent = true }
@@ -103,10 +103,10 @@ local M = {
     }
 
     for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
+      lspconfig[lsp].setup({
         on_attach = on_attach,
         capabilities = capabilities,
-      }
+      })
     end
 
     -- Language Servers with non-default settings
@@ -131,13 +131,8 @@ local M = {
       },
     }
 
-    lspconfig.denols.setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-    }
 
-    lspconfig.ts_ls.setup {
+    lspconfig.ts_ls.setup({
       init_options = {
         preferences = {
           includeInlayParameterNameHints = "all",
@@ -152,17 +147,17 @@ local M = {
       },
       on_attach = on_attach,
       capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern "package.json",
+      root_dir = lspconfig.util.root_pattern("package.json"),
       single_file_support = false,
-    }
+    })
 
-    lspconfig.omnisharp.setup {
+    lspconfig.omnisharp.setup({
       cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
       on_attach = on_attach,
       capabilities = capabilities,
-    }
+    })
 
-    lspconfig.gopls.setup {
+    lspconfig.gopls.setup({
       on_attach = on_attach,
       capabilities = capabilities,
       cmd = { "gopls" },
@@ -176,7 +171,7 @@ local M = {
           staticcheck = true,
         },
       },
-    }
+    })
   end,
 }
 

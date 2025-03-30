@@ -4,15 +4,17 @@ local M = {
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
-    local mason = require "mason"
-    local mason_lspconfig = require "mason-lspconfig"
+    local mason = require("mason")
+    local mason_lspconfig = require("mason-lspconfig")
 
-    mason.setup {
-      "cspell",
-      "prettierd",
-    }
+    mason.setup({
+      ensure_installed = {
+        "cspell",
+        "prettierd",
+      },
+    })
 
-    mason_lspconfig.setup {
+    mason_lspconfig.setup({
       ensure_installed = {
         "cssls",
         "omnisharp",
@@ -30,7 +32,7 @@ local M = {
         "basedpyright",
       },
       automatic_installation = true,
-    }
+    })
   end,
 }
 
