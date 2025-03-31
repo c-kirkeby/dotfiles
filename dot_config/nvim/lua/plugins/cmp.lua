@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     { "L3MON4D3/LuaSnip", version = "v2.*" },
     "rafamadriz/friendly-snippets",
+    "folke/lazydev.nvim",
     { "danymat/neogen",   dependencies = { "nvim-treesitter/nvim-treesitter" }, config = true, version = "*" },
   },
 
@@ -23,7 +24,14 @@ local M = {
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
+      },
     },
   },
   opts_extend = { "sources.default" },

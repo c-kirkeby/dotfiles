@@ -14,7 +14,15 @@ local M = {
         },
       },
     },
-    "folke/lazydev.nvim",
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          "lazy.nvim",
+        },
+      },
+    },
     "nvimtools/none-ls.nvim",
   },
   config = function()
@@ -100,6 +108,7 @@ local M = {
       "basedpyright",
       "phpactor",
       "denols",
+      "lua_ls",
     }
 
     for _, lsp in ipairs(servers) do
@@ -111,26 +120,11 @@ local M = {
 
     -- Language Servers with non-default settings
 
-    lspconfig["lua_ls"].setup {
+    lspconfig.denols.setup({
       on_attach = on_attach,
       capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            library = {
-              vim.fn.expand "$VIMRUNTIME/lua",
-              vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
-              vim.fn.stdpath "config" .. "/lua",
-              vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-            },
-          },
-        },
-      },
-    }
-
+      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+    })
 
     lspconfig.ts_ls.setup({
       init_options = {

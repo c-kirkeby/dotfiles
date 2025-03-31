@@ -2,11 +2,15 @@ local opts = {}
 
 local M = {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
   build = ":TSUpdate",
   config = function()
-    local treesitter = require "nvim-treesitter.configs"
+    local treesitter = require("nvim-treesitter.configs")
+    local treesitter_context = require("treesitter-context")
 
-    treesitter.setup {
+    treesitter.setup({
       highlight = {
         enable = true,
       },
@@ -36,7 +40,17 @@ local M = {
         "markdown_inline",
         "astro",
       },
-    }
+    })
+
+    treesitter_context.setup({
+      max_lines = 3,
+    })
+
+    local opts = { noremap = true, silent = true }
+
+    vim.keymap.set("n", "[c", function()
+      treesitter_context.go_to_context(vim.v.count1)
+    end, opts)
   end,
 }
 
