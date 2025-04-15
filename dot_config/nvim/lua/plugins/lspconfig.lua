@@ -1,6 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
+    "b0o/schemastore.nvim",
     "Saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -87,18 +88,23 @@ local M = {
       end, opts)
     end
 
-    local signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    vim.diagnostic.config({
+      virtual_text = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.INFO] = " ",
+          [vim.diagnostic.severity.HINT] = "󰌵",
+        },
+      },
+    })
 
     -- Language servers with default settings
     local servers = {
       "astro",
       "emmet_ls",
       "yamlls",
-      "jsonls",
       "html",
       "cssls",
       "svelte",
@@ -163,6 +169,17 @@ local M = {
             unusedparams = true,
           },
           staticcheck = true,
+        },
+      },
+    })
+
+    lspconfig.jsonls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
         },
       },
     })

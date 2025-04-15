@@ -10,6 +10,7 @@ local M = {
     mason.setup({
       ensure_installed = {
         "cspell",
+        "js-debug-adapter",
         "prettierd",
       },
     })

@@ -8,6 +8,13 @@ local M = {
       --- @module "catppuccin"
       local catppuccin = require("catppuccin")
 
+      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+      vim.fn.sign_define(
+        "DapBreakpointCondition",
+        { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" }
+      )
+      vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
       catppuccin.setup({
         flavour = "macchiato",
         transparent_background = false,
@@ -47,6 +54,8 @@ local M = {
               background = true,
             },
           },
+          dap = true,
+          dap_ui = true,
           which_key = {
             enabled = true,
           },
