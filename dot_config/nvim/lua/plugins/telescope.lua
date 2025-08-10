@@ -51,7 +51,7 @@ local M = {
     },
     config = function()
       require("telescope").setup(opts)
-      local builtin = require "telescope.builtin"
+      local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
@@ -62,14 +62,14 @@ local M = {
   {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
-      require("telescope").setup {
+      require("telescope").setup({
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
+            require("telescope.themes").get_dropdown({}),
           },
         },
-      }
-      require("telescope").load_extension "ui-select"
+      })
+      require("telescope").load_extension("ui-select")
     end,
   },
 }

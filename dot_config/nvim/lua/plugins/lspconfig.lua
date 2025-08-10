@@ -24,7 +24,7 @@ local M = {
         },
       },
     },
-    "nvimtools/none-ls.nvim",
+    -- "nvimtools/none-ls.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -102,7 +102,6 @@ local M = {
 
     -- Language servers with default settings
     local servers = {
-      "astro",
       "emmet_ls",
       "yamlls",
       "html",
@@ -113,7 +112,7 @@ local M = {
       "tailwindcss",
       "basedpyright",
       "phpactor",
-      "denols",
+      "astro",
       "lua_ls",
     }
 
@@ -125,31 +124,6 @@ local M = {
     end
 
     -- Language Servers with non-default settings
-
-    lspconfig.denols.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-    })
-
-    lspconfig.ts_ls.setup({
-      init_options = {
-        preferences = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = false,
-          includeInlayPropertyDeclarationTypeHints = false,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-          importModuleSpecifierPreference = "non-relative",
-        },
-      },
-      on_attach = on_attach,
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("package.json"),
-      single_file_support = false,
-    })
 
     lspconfig.omnisharp.setup({
       cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },

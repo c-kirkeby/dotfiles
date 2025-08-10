@@ -7,15 +7,16 @@ local M = {
   },
   build = ":TSUpdate",
   config = function()
-    local treesitter = require "nvim-treesitter.configs"
-    local treesitter_context = require "treesitter-context"
+    local treesitter = require("nvim-treesitter.configs")
+    local treesitter_context = require("treesitter-context")
 
-    treesitter.setup {
+    treesitter.setup({
       highlight = {
         enable = true,
       },
       auto_install = true,
       indent = { enable = true },
+      ignore_install = {},
       ensure_installed = {
         -- Defaults
         "lua",
@@ -40,11 +41,11 @@ local M = {
         "markdown_inline",
         "astro",
       },
-    }
+    })
 
-    treesitter_context.setup {
+    treesitter_context.setup({
       max_lines = 3,
-    }
+    })
 
     local opts = { noremap = true, silent = true }
 
