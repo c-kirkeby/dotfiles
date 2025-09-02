@@ -18,6 +18,8 @@ if status is-interactive
   # source (echo $ASDF_DATA_DIR | if test -z $it; echo $HOME/.asdf; else echo $it; end)/plugins/golang/set-env.fish
   # ---
 
+  fzf --fish | source
+
   # Zoxide needs to be initialised last
   zoxide init fish | source
 end
