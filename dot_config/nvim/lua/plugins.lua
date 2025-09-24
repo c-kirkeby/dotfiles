@@ -6,11 +6,6 @@ local M = {
     },
   },
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {},
-  },
-  {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",
@@ -25,9 +20,15 @@ local M = {
     "MysticalDevil/inlay-hints.nvim",
     event = "LspAttach",
     dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      require("inlay-hints").setup()
-    end,
+    -- config = function()
+    --   require("inlay-hints").setup()
+    -- end,
+  },
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
   },
 }
 

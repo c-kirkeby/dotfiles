@@ -16,22 +16,22 @@ local M = {
       vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 
       catppuccin.setup({
+        float = {
+          transparent = false,
+          solid = false,
+        },
         flavour = "macchiato",
         transparent_background = false,
         integrations = {
-          fidget = true,
           gitsigns = true,
           blink_cmp = true,
           snacks = {
             enabled = true,
-            indent_scope_color = "",
+            indent_scope_color = "base",
           },
           illuminate = {
             enabled = true,
             lsp = false,
-          },
-          telescope = {
-            enabled = true,
           },
           lsp_trouble = true,
           native_lsp = {
@@ -56,9 +56,7 @@ local M = {
           },
           dap = true,
           dap_ui = true,
-          which_key = {
-            enabled = true,
-          },
+          which_key = true,
         },
       })
 

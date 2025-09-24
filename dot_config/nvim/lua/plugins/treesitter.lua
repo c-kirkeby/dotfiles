@@ -11,6 +11,7 @@ local M = {
     local treesitter_context = require("treesitter-context")
 
     treesitter.setup({
+      sync_install = false,
       highlight = {
         enable = true,
       },

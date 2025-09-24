@@ -1,6 +1,7 @@
 local M = {
   "numToStr/Comment.nvim",
-  enabled = vim.fn.has "nvim-0.9.5" == 1,
+  -- enabled = vim.fn.has("nvim-0.9.5") == 1,
+  enabled = false,
   dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
   lazy = false,
   keys = {
@@ -12,12 +13,12 @@ local M = {
     { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
   },
   config = function()
-    local comment = require "Comment"
-    local comment_api = require "Comment.api"
+    local comment = require("Comment")
+    local comment_api = require("Comment.api")
 
-    comment.setup {
+    comment.setup({
       pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-    }
+    })
     local opts = { noremap = true, silent = true }
     vim.keymap.set("n", "<leader>/", comment_api.toggle.linewise.current, opts)
     vim.keymap.set(

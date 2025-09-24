@@ -1,3 +1,4 @@
+--- @type LazyPluginSpec
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -5,26 +6,17 @@ local M = {
     "Saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    {
-      "j-hui/fidget.nvim",
-      opts = {
-        notification = {
-          window = {
-            winblend = 0,
-          },
-        },
-      },
-    },
+    "folke/snacks.nvim",
     {
       "folke/lazydev.nvim",
       ft = "lua",
       opts = {
         library = {
           "lazy.nvim",
+          { path = "snacks.nvim", words = { "Snacks" } },
         },
       },
     },
-    -- "nvimtools/none-ls.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -33,9 +25,13 @@ local M = {
     local opts = { noremap = true, silent = true }
     local on_attach = function(_, bufnr)
       opts.buffer = bufnr
+      local snacks = require("snacks")
 
       opts.desc = "Show LSP references"
-      vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+
+      vim.keymap.set("n", "gR", function()
+        snacks.picker.lsp_references(opts)
+      end, opts)
 
       opts.desc = "Go to definition"
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -103,6 +99,7 @@ local M = {
     -- Language servers with default settings
     local servers = {
       "emmet_ls",
+      "biome",
       "yamlls",
       "html",
       "cssls",

@@ -2,15 +2,19 @@ local M = {
   "mrcjkb/rustaceanvim",
   version = "^4",
   ft = { "rust" },
-  dependencies = { "neovim/nvim-lspconfig", "Saghen/blink.cmp" },
+  dependencies = { "neovim/nvim-lspconfig", "Saghen/blink.cmp", "folke/snacks.nvim" },
   opts = {
     server = {
       on_attach = function(_, bufnr)
+        local snacks = require("snacks")
         local opts = { noremap = true, silent = true }
         opts.buffer = bufnr
 
         opts.desc = "Show LSP references"
-        vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+
+        vim.keymap.set("n", "gR", function()
+          snacks.picker.lsp_references(opts)
+        end, opts)
 
         opts.desc = "Go to definition"
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
