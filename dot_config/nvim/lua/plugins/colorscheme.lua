@@ -5,7 +5,7 @@ local M = {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      --- @module "catppuccin"
+      ---@module "catppuccin"
       local catppuccin = require("catppuccin")
 
       vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
@@ -16,48 +16,8 @@ local M = {
       vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 
       catppuccin.setup({
-        float = {
-          transparent = false,
-          solid = false,
-        },
+        auto_integrations = true,
         flavour = "macchiato",
-        transparent_background = false,
-        integrations = {
-          gitsigns = true,
-          blink_cmp = true,
-          snacks = {
-            enabled = true,
-            indent_scope_color = "base",
-          },
-          illuminate = {
-            enabled = true,
-            lsp = false,
-          },
-          lsp_trouble = true,
-          native_lsp = {
-            enabled = true,
-            virtual_text = {
-              errors = { "italic" },
-              hints = { "italic" },
-              warnings = { "italic" },
-              information = { "italic" },
-              ok = { "italic" },
-            },
-            underlines = {
-              errors = { "underline" },
-              hints = { "underline" },
-              warnings = { "underline" },
-              information = { "underline" },
-              ok = { "underline" },
-            },
-            inlay_hints = {
-              background = true,
-            },
-          },
-          dap = true,
-          dap_ui = true,
-          which_key = true,
-        },
       })
 
       vim.cmd.colorscheme("catppuccin")

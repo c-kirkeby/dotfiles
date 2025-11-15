@@ -1,5 +1,3 @@
-local opts = {}
-
 local M = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
@@ -47,7 +45,6 @@ local M = {
     treesitter_context.setup({
       max_lines = 3,
     })
-
     local opts = { noremap = true, silent = true }
 
     vim.keymap.set("n", "[c", function()

@@ -1,0 +1,5 @@
+theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
+window-padding-x = 2,2
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor

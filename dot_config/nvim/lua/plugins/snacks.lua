@@ -1,3 +1,5 @@
+---@module 'snacks'
+
 ---@type LazyPluginSpec
 local M = {
   "folke/snacks.nvim",
@@ -34,6 +36,8 @@ local M = {
     terminal = { enabled = true },
     words = { enabled = true },
     zen = { enabled = true },
+    gh = { enabled = true },
+    toggle = { enabled = true },
   },
   keys = {
     {
@@ -527,6 +531,34 @@ local M = {
         })
       end,
     },
+    {
+      "<leader>gi",
+      function()
+        Snacks.picker.gh_issue()
+      end,
+      desc = "GitHub Issues (open)",
+    },
+    {
+      "<leader>gI",
+      function()
+        Snacks.picker.gh_issue({ state = "all" })
+      end,
+      desc = "GitHub Issues (all)",
+    },
+    {
+      "<leader>gp",
+      function()
+        Snacks.picker.gh_pr()
+      end,
+      desc = "GitHub Pull Requests (open)",
+    },
+    {
+      "<leader>gP",
+      function()
+        Snacks.picker.gh_pr({ state = "all" })
+      end,
+      desc = "GitHub Pull Requests (all)",
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
@@ -548,8 +580,8 @@ local M = {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle
-            .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-            :map("<leader>uc")
+          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+          :map("<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
@@ -563,8 +595,7 @@ local M = {
       ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
       callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        local value = ev.data.params
-            .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+        local value = ev.data.params.value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
         if not client or type(value) ~= "table" then
           return
         end
@@ -596,7 +627,7 @@ local M = {
           title = client.name,
           opts = function(notif)
             notif.icon = #progress[client.id] == 0 and " "
-                or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+              or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
           end,
         })
       end,

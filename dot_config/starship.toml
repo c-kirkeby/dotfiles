@@ -1,0 +1,19 @@
+# format = """
+#   (bold yellow) $directory
+# """
+
+[hostname]
+format = '[$hostname](dark green) '
+
+[package]
+disabled = false
+
+[aws]
+disabled = true
+
+[docker_context]
+disabled = true
+
+# [character]
+# success_symbol = '[➜](bold green)'
+

@@ -1,83 +1,121 @@
 local M = {
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     suggestion = {
+  --       auto_trigger = true,
+  --       keymap = {
+  --         accept = "<tab>",
+  --       },
+  --     },
+  --     copilot_model = "claude-sonnet-4",
+  --   },
+  -- },
   {
     "zbirenbaum/copilot.lua",
+    dependencies = {
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    },
+    cmd = "Copilot",
     event = "InsertEnter",
+  },
+  {
+    "folke/sidekick.nvim",
     opts = {
-      suggestion = {
-        auto_trigger = true,
-        keymap = {
-          accept = "<Tab>",
+      -- add any options here
+      cli = {
+        mux = {
+          backend = "tmux",
+          enabled = true,
         },
       },
-      copilot_model = "claude-sonnet-4",
     },
-  },
-  {
-    "yetone/avante.nvim",
-    build = vim.fn.has("win32") ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-      or "make",
-    event = "VeryLazy",
-    version = false,
-    opts = {
-      provider = "copilot",
-      behavior = {
-        auto_suggestions = false,
+    keys = {
+      {
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion",
+      },
+      {
+        "<c-.>",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        desc = "Sidekick Toggle",
+
+        mode = { "n", "t", "i", "x" },
+      },
+      {
+        "<leader>aa",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        desc = "Sidekick Toggle CLI",
+      },
+      {
+        "<leader>as",
+        function()
+          require("sidekick.cli").select()
+        end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = "Select CLI",
+      },
+      {
+        "<leader>ad",
+        function()
+          require("sidekick.cli").close()
+        end,
+        desc = "Detach a CLI Session",
+      },
+      {
+        "<leader>at",
+        function()
+          require("sidekick.cli").send({ msg = "{this}" })
+        end,
+        mode = { "x", "n" },
+        desc = "Send This",
+      },
+      {
+        "<leader>af",
+        function()
+          require("sidekick.cli").send({ msg = "{file}" })
+        end,
+        desc = "Send File",
+      },
+      {
+        "<leader>av",
+        function()
+          require("sidekick.cli").send({ msg = "{selection}" })
+        end,
+        mode = { "x" },
+        desc = "Send Visual Selection",
+      },
+      {
+        "<leader>ap",
+        function()
+          require("sidekick.cli").prompt()
+        end,
+        mode = { "n", "x" },
+        desc = "Sidekick Select Prompt",
+      },
+      -- Example of a keybinding to open Claude directly
+      {
+        "<leader>ac",
+        function()
+          require("sidekick.cli").toggle({ name = "claude", focus = true })
+        end,
+        desc = "Sidekick Toggle Claude",
       },
     },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "zbirenbaum/copilot.lua",
-    },
-  },
-  {
-    "greggh/claude-code.nvim",
-    dpendencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "NickvanDyke/opencode.nvim",
-    dependencies = {
-      -- Recommended for better prompt input, and required to use opencode.nvim's embedded terminal. Otherwise optional.
-      { "folke/snacks.nvim", opts = { input = { enabled = true } } },
-    },
-    config = function()
-      -- Required for `opts.auto_reload`
-      vim.opt.autoread = true
-
-      -- Recommended keymaps
-      vim.keymap.set("n", "<leader>ot", function()
-        require("opencode").toggle()
-      end, { desc = "Toggle opencode" })
-      vim.keymap.set("n", "<leader>oA", function()
-        require("opencode").ask()
-      end, { desc = "Ask opencode" })
-      vim.keymap.set("n", "<leader>oa", function()
-        require("opencode").ask("@cursor: ")
-      end, { desc = "Ask opencode about this" })
-      vim.keymap.set("v", "<leader>oa", function()
-        require("opencode").ask("@selection: ")
-      end, { desc = "Ask opencode about selection" })
-      vim.keymap.set("n", "<leader>on", function()
-        require("opencode").command("session_new")
-      end, { desc = "New opencode session" })
-      vim.keymap.set("n", "<leader>oy", function()
-        require("opencode").command("messages_copy")
-      end, { desc = "Copy last opencode response" })
-      vim.keymap.set("n", "<S-C-u>", function()
-        require("opencode").command("messages_half_page_up")
-      end, { desc = "Messages half page up" })
-      vim.keymap.set("n", "<S-C-d>", function()
-        require("opencode").command("messages_half_page_down")
-      end, { desc = "Messages half page down" })
-      vim.keymap.set({ "n", "v" }, "<leader>os", function()
-        require("opencode").select()
-      end, { desc = "Select opencode prompt" })
-
-      -- Example: keymap for custom prompt
-      vim.keymap.set("n", "<leader>oe", function()
-        require("opencode").prompt("Explain @cursor and its context")
-      end, { desc = "Explain this code" })
-    end,
   },
 }
+
 return M

@@ -20,9 +20,9 @@ local M = {
     "MysticalDevil/inlay-hints.nvim",
     event = "LspAttach",
     dependencies = { "neovim/nvim-lspconfig" },
-    -- config = function()
-    --   require("inlay-hints").setup()
-    -- end,
+    config = function()
+      require("inlay-hints").setup()
+    end,
   },
   {
     "nvzone/typr",

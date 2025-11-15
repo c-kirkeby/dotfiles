@@ -11,6 +11,12 @@ local M = {
   opts = {
     default_format_opts = { lsp_format = "fallback" },
     formatters = {
+      ["biome-check"] = {
+        cwd = root_file({
+          "biome.json",
+          "biome.jsonc",
+        }),
+      },
       prettierd = {
         cwd = root_file({
           -- https://prettier.io/docs/en/configuration.html

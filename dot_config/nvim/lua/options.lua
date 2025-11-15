@@ -1,6 +1,7 @@
 -- General
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
+vim.opt.spelllang = "en_gb"
 
 -- Tab Options
 vim.opt.tabstop = 2

@@ -20,6 +20,20 @@ if status is-interactive
 
   fzf --fish | source
 
+  set -g fish_key_bindings fish_vi_key_bindings
+
   # Zoxide needs to be initialised last
   zoxide init fish | source
 end
+
+# Created by `pipx` on 2025-09-07 03:49:24
+set PATH $PATH /Users/christian/.local/bin
+
+fish_add_path /Users/christian/.spicetify
+
+# pnpm
+set -gx PNPM_HOME "/Users/christian/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
