@@ -2,4 +2,9 @@
     type = "git-repo"
     url = "https://github.com/tmux-plugins/tpm"
     exact = true
+[".config/ghostty/themes"]
+    type = "archive"
+    url = "https://github.com/catppuccin/ghostty/archive/refs/heads/main.zip"
+    stripComponents = 1
+    include = ["themes/*"]
 
