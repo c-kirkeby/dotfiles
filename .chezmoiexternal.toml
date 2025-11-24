@@ -7,4 +7,8 @@
     url = "https://github.com/catppuccin/ghostty/archive/refs/heads/main.zip"
     stripComponents = 1
     include = ["themes/*"]
+[".config/ghostty/shaders"]
+    type = "git-repo"
+    url = "https://github.com/0xhckr/ghostty-shaders.git"
+    include = ["*.glsl"]
 
