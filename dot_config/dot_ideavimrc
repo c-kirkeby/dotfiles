@@ -1,0 +1,68 @@
+
+" Plugins
+set nerdtree
+set which-key
+set commentary
+
+
+" Leader keys
+let mapleader = " "
+let maplocalleader = " "
+
+" General options
+set backspace=2
+set showcmd
+set laststatus=2
+set cursorline
+set clipboard=unnamedplus
+set mouse=a
+
+" Tab options
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set autoindent
+
+" UI Config
+set number
+set relativenumber
+set cursorline
+set splitbelow
+set splitright
+set showmode=false
+set colorcolumn=79
+" set listchars=space:·,tab:\ 
+set list
+set signcolumn=yes
+
+" Update time
+set updatetime=250
+set timeoutlen=300
+
+" Searching
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Map LSP Actions
+map <leader>ca <action>(ShowIntentionActions)
+" File Picker
+map <leader>ff <action>(GotoFile)
+map <leader>fg <action>(FindInPath)
+map <leader>fr <action>(RecentFiles)
+" Tab manipulation
+map [b <action>(PreviousTab)
+map ]b <action>(NextTab)
+map <leader>bd <action>(CloseContent)
+" Trouble
+map <leader>xx <action>(ActivateProblemsViewToolWindow)
+" Explorer
+map <leader>e <action>(NERDTreeToggle)
+" Refactoring
+map <leader>r <Action>(RenameElement)
+" Popup navigation
+inoremap <C-n> <Action>(PopupMenu-selectNext)
+inoremap <C-p> <Action>(PopupMenu-selectPrev)
