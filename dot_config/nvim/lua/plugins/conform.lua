@@ -17,35 +17,55 @@ local M = {
           "biome.jsonc",
         }),
       },
-      prettierd = {
-        cwd = root_file({
-          -- https://prettier.io/docs/en/configuration.html
-          ".prettierrc",
-          ".prettierrc.json",
-          ".prettierrc.yml",
-          ".prettierrc.yaml",
-          ".prettierrc.json5",
-          ".prettierrc.js",
-          ".prettierrc.cjs",
-          ".prettierrc.mjs",
-          ".prettierrc.toml",
-          "prettier.config.js",
-          "prettier.config.cjs",
-          "prettier.config.mjs",
-        }),
+      -- prettierd = {
+      --   cwd = root_file({
+      --     -- https://prettier.io/docs/en/configuration.html
+      --     ".prettierrc",
+      --     ".prettierrc.json",
+      --     ".prettierrc.yml",
+      --     ".prettierrc.yaml",
+      --     ".prettierrc.json5",
+      --     ".prettierrc.js",
+      --     ".prettierrc.cjs",
+      --     ".prettierrc.mjs",
+      --     ".prettierrc.toml",
+      --     "prettier.config.js",
+      --     "prettier.config.cjs",
+      --     "prettier.config.mjs",
+      --   }),
+      -- },
+      oxfmt = {
+        command = "vp", -- use vp cli
+        args = { "fmt", "--write", "$FILENAME" }, -- provide explicit flags from open buffer into --write
+        stdin = false,
+        cwd = root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc" }),
+        require_cwd = true,
       },
     },
     formatters_by_ft = {
       lua = { "stylua" },
       go = { "gofmt", "goimports" },
       cs = { "csharpier" },
-      javacript = { "prettierd" },
-      typescript = { "prettierd" },
-      typescriptreact = { "prettierd" },
-      json = { "prettierd" },
-      jsonc = { "prettierd" },
-      svelte = { "prettierd" },
-      astro = { "prettierd" },
+      -- javacript = { "prettierd" },
+      typescript = {
+        -- "prettierd",
+        "oxfmt",
+      },
+      typescriptreact = {
+        -- "prettierd",
+        "oxfmt",
+      },
+      json = {
+        -- "prettierd"
+      },
+      jsonc = {
+        -- "prettierd"
+      },
+      -- svelte = { "prettierd" },
+      astro = {
+        -- "prettierd",
+        "oxfmt",
+      },
     },
     format_on_save = {
       timeout_ms = 5000,

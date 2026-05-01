@@ -5,7 +5,8 @@ local M = {
       "cssls",
       "omnisharp",
       "ts_ls",
-      -- "copilot", -- enable once inline completion is available in 0.12
+      "csharp_ls",
+      "copilot",
       "eslint",
       "lua_ls",
       "svelte",
@@ -28,7 +29,10 @@ local M = {
         ensure_installed = {
           "cspell",
           "js-debug-adapter",
+          "rust-analyzer",
           "prettierd",
+          "oxlint",
+          "oxfmt",
         },
       },
     },

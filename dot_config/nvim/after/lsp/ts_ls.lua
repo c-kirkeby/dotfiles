@@ -9,7 +9,7 @@ local M = {
         showOnAllFunctions = true,
       },
       inlayHints = {
-        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHints = "literals",
         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
         includeInlayFunctionParameterTypeHints = true,
         includeInlayVariableTypeHints = true,
@@ -21,7 +21,7 @@ local M = {
     },
     javascript = {
       inlayHints = {
-        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHints = "literals",
         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
         includeInlayFunctionParameterTypeHints = true,
         includeInlayVariableTypeHints = true,
