@@ -3,10 +3,8 @@ local M = {
   opts = {
     ensure_installed = {
       "cssls",
-      "omnisharp",
       "ts_ls",
-      "csharp_ls",
-      "copilot",
+      "roslyn_ls",
       "eslint",
       "lua_ls",
       "svelte",

@@ -12,14 +12,14 @@ local M = {
   --     copilot_model = "claude-sonnet-4",
   --   },
   -- },
-  {
-    "zbirenbaum/copilot.lua",
-    dependencies = {
-      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-    },
-    cmd = "Copilot",
-    event = "InsertEnter",
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   dependencies = {
+  --     "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+  --   },
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  -- },
   {
     "folke/sidekick.nvim",
     opts = {
