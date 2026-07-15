@@ -15,6 +15,8 @@ brew 'go'
 brew 'gh'
 brew 'dotnet'
 brew 'vercel-cli'
+brew 'neonctl'
+brew 'rg'
 
 cask 'zen'
 cask 'ghostty'
