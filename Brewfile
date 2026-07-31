@@ -27,6 +27,9 @@ brew 'uv'
 brew 'vercel-cli'
 brew 'zoxide'
 brew 'vite-plus'
+brew 'fresh-editor'
+brew 'pgcli'
+brew 'git-delta'
 
 # Dotenvx
 tap 'dotenvx/brew', trusted: true
@@ -47,4 +50,4 @@ cask 'thunderbird'
 cask 'zed'
 cask 'zen'
 cask 'navigator'
-
+cask 'dbeaver-community'
