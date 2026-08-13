@@ -30,6 +30,8 @@ brew 'vite-plus'
 brew 'fresh-editor'
 brew 'pgcli'
 brew 'git-delta'
+brew 'hunk'
+brew 'pass'
 
 # Dotenvx
 tap 'dotenvx/brew', trusted: true
@@ -40,6 +42,7 @@ cask '1password-cli'
 cask 'atuin-desktop'
 cask 'claude'
 cask 'claude-code'
+cask 'google-chrome'
 cask 'ghostty'
 cask 'google-drive'
 cask 'keymapp'
